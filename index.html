@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>login form</title>
+        <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 400px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 50px;
+        }
+        .title{
+            font-size: 25px;
+            font-weight: bold;
+            margin-bottom: 1px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body{
+            background-color: aqua;
+            display: fixed;
+            font-family: sans-serif;
+        }
+        form div input {
+            width: 100%;
+            height: 40px;
+            border-radius: 8px;
+            outline: none;
+            border: 2px solid #e7c3c3;
+            padding: 0 30px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        form  {
+            position: relative;
+            margin-bottom: 15px;
+        }
+        .container{
+            height: 625px;
+            width: 400px;
+            border: 5px solid black;
+            background-color: white;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            margin-top:100px ;
+            margin-left: 600px;
+            }
+            #btn{
+                    margin-top: 30px;
+                    margin-left: 60px;
+                    background-color: antiquewhite;
+            }
+            input:focus {
+            border: 2px solid #a74138;
+        }
+        .error{
+            color: #cc6157;
+        }
+        .btn {
+            display: flex;
+            flex-direction: row;
+        }
+        .or {
+            text-align: center;
+        }
+        .question {
+            font-size: 15px;
+        }
+        span {
+            color: #f2796e;
+            cursor: pointer;
+        }
+        #button{
+            border-radius: 20px;
+            align-items: center;
+            background-color:white ;
+            padding: 10px;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.1s ease;
+            background-color: #f2796e;
+        }
+        #button:hover{
+            opacity: 0.9;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .btn1{
+            padding: 10px 5px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid #c4c4c4;
+            border-radius: 8px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }    
+    </style> 
+</head>
+<body>
+    <div class="container">
+        <form id="form" style="text-align:center" action="" onsubmit="return validate()">
+            <div class="social">
+                <div class="title">Login Form</div><br>
+                <div class="question">
+                    Already Have an Account? <br><br>
+                    <span>Sign In</span>
+                </div>
+                <div class="btn">
+                    <div class="btn1">
+                        <img src="https://img.icons8.com/color/30/000000/google-logo.png" />
+                        sign up
+                    </div>
+                </div>
+                <br>
+                <div class="or">or</div>
+            </div>
+            <br>
+            <div>
+                <label for="username">Username :</label>
+                <input type="text" name="username" id="username" placeholder="enter username">
+                <p id="para"></p>
+                <div class="error"></div>
+            </div>
+            <br>
+            <div>
+                <label for="email">Email :</label>
+                <input type="text" name="email" id="email" placeholder="enter email Id">
+                <div class="error"></div>
+            </div> 
+            <br>
+            <div>
+                <label for="password">Password :</label>
+                <input type="text" name="password" id="password" placeholder="enter password">
+                <div class="error"></div>
+            </div>
+            <br>
+            <button id="button" type="submit" onclick="submitForm()">Submit</button>
+        </form>
+    </div>
+    <script>
+        let id = (id) => document.getElementById(id);
+        let classes = (classes) => document.getElementsByClassName(classes);
+        let username = id("username");
+        let email = id("email");
+        let password = id("password");
+        let form = id("form");
+        let errorMsg = classes("error");
+        form.addEventListener("submit", (e) => {e.preventDefault();
+            engine(username, 0, "Username cannot be blank");
+            engine(email, 1, "Email cannot be blank");
+            engine(password, 2, "Password cannot be blank");
+        });
+        let engine = (id, serial, message) => {
+            if (id.value.trim() === "") {
+                errorMsg[serial].innerHTML = message;
+            } 
+            else {
+                errorMsg[seial].innerHTML=" ";
+            }
+        }
+        function submitForm() {
+    const nameInput = document.getElementById("username").value;
+    if (nameInput.trim() === "") {
+        alert(" Please fill out username.");
+    } else {
+        alert(" username Submitted successfully!");
+    }
+
+    const d= document.getElementById("email").value;
+    if (d.trim() === "") {
+        alert(" Please fill out emails.");
+    } else {
+        alert(" email Submitted successfully!");
+    }
+
+    const b= document.getElementById("password").value;
+    if (b.trim() === "") {
+        alert(" Please fill out password.");
+    } else {
+        alert("password Submitted successfully!");
+    }
+    }
+    </script>
+</body>
+</html>
